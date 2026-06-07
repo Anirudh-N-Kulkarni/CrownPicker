@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CrownPicker — Get Funded on Proof, Not Polish</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #0A0A0B;
+    color: #F5F3EE;
+    overflow-x: hidden;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    position: sticky;
+    top: 0;
+    background: #0A0A0B;
+    z-index: 100;
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+    color: #F5F3EE;
+    text-decoration: none;
+  }
+  .logo span { color: #C9A84C; }
+  .nav-cta {
+    background: #C9A84C;
+    color: #0A0A0B;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    border: none;
+    padding: 0.5rem 1.1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .hero {
+    padding: 5rem 2rem 4rem;
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #C9A84C;
+    border: 0.5px solid rgba(201,168,76,0.4);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    margin-bottom: 1.75rem;
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+    color: #F5F3EE;
+  }
+  h1 em { font-style: normal; color: #C9A84C; }
+  .sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(245,243,238,0.6);
+    line-height: 1.65;
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+  }
+  .cta-group {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: #C9A84C;
+    color: #0A0A0B;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: none;
+    padding: 0.75rem 1.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-secondary {
+    background: transparent;
+    color: #F5F3EE;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    border: 0.5px solid rgba(245,243,238,0.2);
+    padding: 0.75rem 1.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .divider { height: 0.5px; background: rgba(255,255,255,0.06); margin: 0 2rem; }
+  section { padding: 4rem 2rem; max-width: 800px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245,243,238,0.35);
+    margin-bottom: 2.5rem;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .step { background: #0A0A0B; padding: 1.75rem 1.5rem; }
+  .step-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #C9A84C;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+  .step-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #F5F3EE;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  .step-body {
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: rgba(245,243,238,0.5);
+    line-height: 1.6;
+  }
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .value-card {
+    border: 0.5px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+  .value-icon { font-size: 20px; color: #C9A84C; margin-bottom: 0.9rem; }
+  .value-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #F5F3EE;
+    margin-bottom: 0.4rem;
+  }
+  .value-desc {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgba(245,243,238,0.45);
+    line-height: 1.6;
+  }
+  .pricing { max-width: 500px; text-align: center; }
+  .price-card {
+    border: 0.5px solid rgba(201,168,76,0.3);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    background: rgba(201,168,76,0.04);
+  }
+  .price-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #C9A84C;
+    margin-bottom: 1rem;
+  }
+  .price-big {
+    font-family: 'Syne', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #F5F3EE;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .price-note { font-size: 0.8rem; color: rgba(245,243,238,0.4); margin-bottom: 1.75rem; }
+  .price-features { list-style: none; text-align: left; margin-bottom: 2rem; }
+  .price-features li {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: rgba(245,243,238,0.65);
+    padding: 0.4rem 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .price-features li i { color: #C9A84C; font-size: 15px; }
+  .final-section {
+    padding: 5rem 2rem;
+    text-align: center;
+    background: linear-gradient(180deg, transparent, rgba(201,168,76,0.05));
+    max-width: 100%;
+  }
+  .final-h {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #F5F3EE;
+    margin-bottom: 0.75rem;
+  }
+  .final-sub {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(245,243,238,0.5);
+    margin-bottom: 2rem;
+  }
+  .email-row {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    max-width: 380px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+  .email-row input {
+    flex: 1;
+    min-width: 180px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    background: rgba(255,255,255,0.05);
+    border: 0.5px solid rgba(255,255,255,0.15);
+    color: #F5F3EE;
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    outline: none;
+  }
+  .email-row input::placeholder { color: rgba(245,243,238,0.3); }
+  footer {
+    padding: 1.5rem 2rem;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: rgba(245,243,238,0.4);
+  }
+  .footer-logo span { color: rgba(201,168,76,0.6); }
+  .footer-note { font-size: 0.75rem; color: rgba(245,243,238,0.25); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#">Crown<span>Picker</span></a>
+  <a class="nav-cta" href="#waitlist">Join waitlist</a>
+</nav>
+
+<section class="hero">
+  <div class="tag">For founders who are done being ignored</div>
+  <h1>Investors don't fund<br>pitches. They fund <em>proof.</em></h1>
+  <p class="sub">CrownPicker turns real crowd engagement into your traction signal — so investors see what's resonating before they open your deck.</p>
+  <div class="cta-group">
+    <a class="btn-primary" href="#waitlist">Join the waitlist</a>
+    <a class="btn-secondary" href="#how">See how it works</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="how">
+  <p class="section-label">How it works</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">Submit your startup</div>
+      <div class="step-body">List your pitch on CrownPicker. No upfront fees. No gatekeepers.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">Real audiences react</div>
+      <div class="step-body">Genuine crowd engagement data builds around your idea — interest, buzz, signal.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">Investors take notice</div>
+      <div class="step-body">Investors on our platform see what's already resonating — not cold decks.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">Close and grow</div>
+      <div class="step-body">We earn 7% only when you close funding. Zero risk to get started.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="why">
+  <p class="section-label">Why CrownPicker</p>
+  <div class="value-grid">
+    <div class="value-card">
+      <div class="value-icon"><i class="ti ti-chart-line"></i></div>
+      <div class="value-title">Traction before funding</div>
+      <div class="value-desc">Show investors real market interest — not projections.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon"><i class="ti ti-shield-off"></i></div>
+      <div class="value-title">Zero upfront cost</div>
+      <div class="value-desc">Commission-only. We only win when you win.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon"><i class="ti ti-users"></i></div>
+      <div class="value-title">Curated investors</div>
+      <div class="value-desc">Investors who use signal, not cold decks, to make decisions.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon"><i class="ti ti-eye"></i></div>
+      <div class="value-title">Get seen on merit</div>
+      <div class="value-desc">Your idea earns attention — not your network or your polish.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="pricing" style="margin: 0 auto;">
+  <p class="section-label">Pricing</p>
+  <div class="price-card">
+    <div class="price-label">Commission model</div>
+    <div class="price-big">7%</div>
+    <div class="price-note">Only on successfully closed funding rounds</div>
+    <ul class="price-features">
+      <li><i class="ti ti-check"></i> Free to list your startup</li>
+      <li><i class="ti ti-check"></i> Full crowd engagement data</li>
+      <li><i class="ti ti-check"></i> Investor-facing pitch profile</li>
+      <li><i class="ti ti-check"></i> No success, no fee</li>
+    </ul>
+    <a class="btn-primary" href="#waitlist" style="width:100%; text-align:center; font-size:0.95rem; padding:0.9rem; display:block;">Join the waitlist</a>
+  </div>
+</section>
+
+<div class="final-section" id="waitlist">
+  <h2 class="final-h">Ready to get seen?</h2>
+  <p class="final-sub">Join the waitlist. Be first when we launch.</p>
+  <div class="email-row">
+    <input type="email" placeholder="your@email.com" />
+    <a class="btn-primary" href="mailto:contact@crownpicker.in">Get early access</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Crown<span>Picker</span></div>
+  <div class="footer-note">© 2025 CrownPicker · contact@crownpicker.in</div>
+</footer>
+
+</body>
+</html>
